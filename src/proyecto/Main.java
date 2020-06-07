@@ -27,7 +27,7 @@ public class Main {
         MyArrayList<medicamento> medicamentos= new MyArrayList<>();
         Avl_tree<Usuario> usuarios1 = new Avl_tree<>();
         usuarios1.insert(new Usuario(0, "Contraseña"));
-        System.out.println(usuarios1.contains(new Usuario(0, "Contraseña")));
+        System.out.println(usuarios1.find(new Usuario(0, "Contra")));
         int j=0;
         Random r= new Random();
         long startTime = System.currentTimeMillis();
