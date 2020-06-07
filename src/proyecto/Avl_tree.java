@@ -131,7 +131,7 @@ public class Avl_tree <T extends Comparable<? super T>> {
          }
      }   
     }
-     t.height=Math.max(Height(t.izquierda),Height(t.derecha));
+     t.height=Math.max(Height(t.izquierda),Height(t.derecha))+1;
      return t;
     }
     private Avl_Node<T> rotateLeft(Avl_Node<T> k2){
