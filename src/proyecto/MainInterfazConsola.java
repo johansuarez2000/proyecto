@@ -27,31 +27,44 @@ public class MainInterfazConsola {
         medicamento p= new medicamento("Loratadina", 60 , 7, 3);
         u.medicamentos.add(p);
         medicamentos.add(p);
+        Avl_Node<Usuario> existe = null;
         
         Scanner sc = new Scanner(System.in);
         
-        while (true){
-            //comprobar si existe el usuario
-            System.out.println("Hola, por favor ingresa tu id de usuario.");
+        //comprobar si existe el usuario
+        boolean flag=false;
+        while ( flag !=true){
+            System.out.println("Por favor ingresa tu id de usuario.");
             int id = sc.nextInt();
             System.out.println("Ingresa tu contraseña");
-            String contraseña = sc.nextLine();
-            Usuario comparar = new Usuario(id, contraseña );
-            boolean existe = usuarios1.contains(comparar);
-            if(existe==true){
+            String contraseña = sc.next();
+            Usuario usu = new Usuario(id,contraseña);
+            existe = usuarios1.find(usu);
+            if(existe != null){                
                 System.out.println("Bienvenido, en que podemos ayudarte?");
+                flag=true;
             }
             else{
                 System.out.println("Usuario o contraseña incorrecta");
             }
+        }/////////////////////////////////////////////////
+        //Mostrar funcionalidades
+        while(true){
+            int decision;
+            System.out.println("1. Listar Medicamentos 2. Consultar medicamento 3. Registrar Medicamento");
+            decision = sc.nextInt();
+            switch (decision){
+                case 1:
+                    for(int i=0; i<existe.element.medicamentos.getSize();i++){
+                        Object[] t= existe.element.medicamentos.getItems();
+                        t[i].toString();
+                    }
+                    break;
+                case 2:
+                    System.out.println("Nombre del medicamento que deseas buscar");
+                    break;
+            }
+            
         }
-        
-        
-        
-        
-        
-        
-        
-       
     }
 }

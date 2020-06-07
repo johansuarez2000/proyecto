@@ -107,4 +107,20 @@ public class MyArrayList<T extends Comparable>  {
       Arrays.sort(items, 0, size, c);
    }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public T[] getItems() {
+        return items;
+    }
+
+    public void setItems(T[] items) {
+        this.items = items;
+    }
+   
 }
