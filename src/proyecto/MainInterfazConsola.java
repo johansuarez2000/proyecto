@@ -20,8 +20,10 @@ public class MainInterfazConsola {
         Avl_tree<Usuario> usuarios1 = new Avl_tree<>();
         
         Usuario u = new Usuario(1234, "1234");
+        Usuario u2 = new Usuario(1234, "1234");
         usuarios.add(u);
         usuarios1.insert(u);
+        usuarios1.insert(u2);
         medicamento p= new medicamento("Loratadina", 60 , 7, 3);
         u.medicamentos.add(p);
         medicamentos.add(p);
@@ -31,7 +33,7 @@ public class MainInterfazConsola {
         
         //El siguiente while permite crear un usuario, quitar los comentarios cuando se pruebe el balanceo del AVL
         boolean flag=false;
-        /*while(flag!=true){
+        while(flag!=true){
             System.out.println("¿Tienes una cuenta o deseas registrarte?");
             System.out.println("1.Tengo una cuenta 2. deseo registrarme");
             int decision=sc.nextInt();
@@ -49,7 +51,7 @@ public class MainInterfazConsola {
                     flag = true;
                     break;
             }
-        }*/
+        }
         
         //comprobar si existe el usuario
         flag=false;
