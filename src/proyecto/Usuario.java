@@ -10,7 +10,7 @@ import java.util.*;
  * @author Usuario
  */
 public class Usuario implements Comparable<Usuario> {
-    MyArrayList<medicamento> medicamentos= new MyArrayList<>();
+    MyArrayList<medicamento> medicamentos;
     int id;
     String tipo;
     String Fecha;
@@ -19,6 +19,7 @@ public class Usuario implements Comparable<Usuario> {
     public Usuario(int id, String Contraseña) {
         this.id = id;
         this.Contraseña = Contraseña;
+        this.medicamentos= new MyArrayList<>();
     }
 
     public int getId() {

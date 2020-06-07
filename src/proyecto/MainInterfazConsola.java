@@ -6,8 +6,6 @@
 package proyecto;
 
 import java.util.*;
-import java.math.*;
-import java.security.*;
 /**
  *
  * @author ASUS
@@ -27,12 +25,34 @@ public class MainInterfazConsola {
         medicamento p= new medicamento("Loratadina", 60 , 7, 3);
         u.medicamentos.add(p);
         medicamentos.add(p);
-        Avl_Node<Usuario> existe = null;
+        Avl_Node<Usuario> existe = null; //cuando se compruebe el usuario sus datos se van a manejar con este nodo, por eso es global
         
         Scanner sc = new Scanner(System.in);
         
-        //comprobar si existe el usuario
+        //El siguiente while permite crear un usuario, quitar los comentarios cuando se pruebe el balanceo del AVL
         boolean flag=false;
+        /*while(flag!=true){
+            System.out.println("¿Tienes una cuenta o deseas registrarte?");
+            System.out.println("1.Tengo una cuenta 2. deseo registrarme");
+            int decision=sc.nextInt();
+            switch (decision){
+                case 1:
+                    flag = true;
+                    break;
+                case 2:
+                    System.out.println("Escribe tu id");
+                    int id= sc.nextInt();
+                    System.out.println("Escribe tu contraseña");
+                    String contraseña= sc.next();
+                    Usuario l= new Usuario(id,contraseña);
+                    usuarios1.insert(l);
+                    flag = true;
+                    break;
+            }
+        }*/
+        
+        //comprobar si existe el usuario
+        flag=false;
         while ( flag !=true){
             System.out.println("Por favor ingresa tu id de usuario.");
             int id = sc.nextInt();
@@ -41,7 +61,7 @@ public class MainInterfazConsola {
             Usuario usu = new Usuario(id,contraseña);
             existe = usuarios1.find(usu);
             if(existe != null){                
-                System.out.println("Bienvenido, en que podemos ayudarte?");
+                System.out.println("Bienvenido ¿En que podemos ayudarte?");
                 flag=true;
             }
             else{
@@ -56,15 +76,38 @@ public class MainInterfazConsola {
             switch (decision){
                 case 1:
                     for(int i=0; i<existe.element.medicamentos.getSize();i++){
-                        Object[] t= existe.element.medicamentos.getItems();
-                        t[i].toString();
+                        System.out.println("Medicamento "+ (i+1));
+                        System.out.println(existe.element.medicamentos.get(i).toString());
                     }
+                    System.out.println("Esos son todos los medicamentos");
                     break;
                 case 2:
                     System.out.println("Nombre del medicamento que deseas buscar");
+                    String nombre = sc.next();
+                    medicamento m = new medicamento (nombre, 0,0,0);
+                   for(int i=0; i<existe.element.medicamentos.getSize();i++){
+                       if(m.getNombre().equals(existe.element.medicamentos.get(i).getNombre())){
+                           System.out.println(existe.element.medicamentos.get(i).toString());
+                       }
+                       else{
+                           System.out.println("Medicamento no encontrado");
+                       }
+                    }
+                    break;
+                case 3:
+                    System.out.println("¿Nombre del medicamento?");
+                    nombre=sc.next();
+                    System.out.println("¿Cantidad del medicamento?");
+                    int cantidad=sc.nextInt();
+                    System.out.println("¿Veces por semana del medicamento?");
+                    int vecesSemana=sc.nextInt();
+                    System.out.println("¿Veces por dia del medicamento?");
+                    int vecesDia=sc.nextInt();
+                    medicamento f = new medicamento(nombre, cantidad, vecesSemana, vecesDia);
+                    existe.element.medicamentos.add(f);
+                    System.out.println("Registrado Exitosamente");
                     break;
             }
-            
         }
     }
 }
