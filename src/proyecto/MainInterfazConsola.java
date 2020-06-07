@@ -13,12 +13,6 @@ import java.security.*;
  * @author ASUS
  */
 public class MainInterfazConsola {
-
-    public static String randomtext(){
-        SecureRandom random= new SecureRandom();
-        String txt= new BigInteger(130, random).toString();
-        return txt;
-    }
     /**
      * @param args the command line arguments
      */
@@ -26,24 +20,38 @@ public class MainInterfazConsola {
         MyArrayList<Usuario> usuarios= new MyArrayList<>();
         MyArrayList<medicamento> medicamentos= new MyArrayList<>();
         Avl_tree<Usuario> usuarios1 = new Avl_tree<>();
-        usuarios1.insert(new Usuario(0, "Contraseña"));
-        System.out.println(usuarios1.contains(new Usuario(0, "Contraseña")));
-        int j=0;
-        Random r= new Random();
-        long startTime = System.currentTimeMillis();
-          for (int i = 0; i < 10; i++) {
-              j++;
-              Usuario p= new Usuario(j,"Hola");
-              usuarios.add(p);
-          }
-          for (int k = 0; k < 10; k ++) {
-              medicamento p= new medicamento("hola",5,3,3);
-              medicamentos.add(p);              
-          }
         
-        medicamentos.sort(new ordenarNombre());
-        usuarios.sort(new ordenar());
+        Usuario u = new Usuario(1234, "1234");
+        usuarios.add(u);
+        usuarios1.insert(u);
+        medicamento p= new medicamento("Loratadina", 60 , 7, 3);
+        u.medicamentos.add(p);
+        medicamentos.add(p);
         
-        System.out.println(usuarios.find(new Usuario(800,"ola")));
+        Scanner sc = new Scanner(System.in);
+        
+        while (true){
+            //comprobar si existe el usuario
+            System.out.println("Hola, por favor ingresa tu id de usuario.");
+            int id = sc.nextInt();
+            System.out.println("Ingresa tu contraseña");
+            String contraseña = sc.nextLine();
+            Usuario comparar = new Usuario(id, contraseña );
+            boolean existe = usuarios1.contains(comparar);
+            if(existe==true){
+                System.out.println("Bienvenido, en que podemos ayudarte?");
+            }
+            else{
+                System.out.println("Usuario o contraseña incorrecta");
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+       
     }
 }
