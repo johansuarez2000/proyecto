@@ -28,6 +28,24 @@ public class Avl_tree <T extends Comparable<? super T>> {
     public boolean contains(T x){
         return contains(x, raiz);
     }
+    public Avl_Node<T> find(T x){
+        return find(x,raiz);
+    }
+    
+    private Avl_Node<T> find(T x,Avl_Node<T> t){
+        if(t==null){
+            return null;
+        }
+        int compareResult=x.compareTo(t.element);
+        if(compareResult<0){
+            return find(x,t.izquierda);
+        }
+        else if(compareResult>0){
+            return find(x,t.derecha);
+        }else
+            return t;       
+    }
+    
     public T findMin(){
         if(isEmpty()){
             throw new UnderflowException("El arbol esta vacio");           
