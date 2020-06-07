@@ -71,9 +71,10 @@ public class MainInterfazConsola {
             }
         }/////////////////////////////////////////////////
         //Mostrar funcionalidades
-        while(true){
+        flag=false;
+        while(flag!=true){
             int decision;
-            System.out.println("1. Listar Medicamentos 2. Consultar medicamento 3. Registrar Medicamento");
+            System.out.println("1. Listar Medicamentos 2. Consultar medicamento 3. Registrar Medicamento 4. salir");
             decision = sc.nextInt();
             switch (decision){
                 case 1:
@@ -109,6 +110,9 @@ public class MainInterfazConsola {
                     existe.element.medicamentos.add(f);
                     System.out.println("Registrado Exitosamente");
                     break;
+                case 4:
+                    System.out.println("Estamos contigo");
+                    flag=true;
             }
         }
     }
