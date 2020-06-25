@@ -64,9 +64,6 @@ public class Avl_tree <T extends Comparable<? super T>> {
     public void remove(T x){
         raiz=remove(x,raiz);
     }
-    public void Printtree(){
-        
-    }
     private boolean contains(T x,Avl_Node<T> t){
         if(t==null){
             return false;
@@ -171,6 +168,15 @@ public class Avl_tree <T extends Comparable<? super T>> {
             t.element=findMin(t.derecha).element;
             t.derecha=remove(t.element, t.derecha);
         }
+        else{
+            if(t.izquierda != null){
+                t= t.izquierda;
+            } else{
+                t=t.derecha;
+            }
+        }
+            
+                 
        return balance(t); 
     }
     private void print(){
