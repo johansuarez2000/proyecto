@@ -66,11 +66,11 @@ public class MyArrayList<T extends Comparable>  {
 	items[i] = old[ i ];
     }
 }
-    public boolean add(T x ){
-    add( size( ), x );
+    public boolean add(T x,Comparator c ){
+    add( size( ), x, c );
     return true;
     }
-    public void add( int idx, T x )
+    public void add( int idx, T x, Comparator c )
 	{
 	if( items.length == size( ) )
 	ensureCapacity( size( ) * 2+1 );
@@ -79,6 +79,9 @@ public class MyArrayList<T extends Comparable>  {
         }
 	items[idx] = x;
 	size++;
+       
+        Arrays.sort(items,0,size, c);
+        
       	}
  
    public T remove( int idx ){

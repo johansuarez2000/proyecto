@@ -45,9 +45,6 @@ public class Avl_Node<T> {
         this.derecha = derecha;
     }
 
-    public int getHeight() {
-        return height;
-    }
 
     public void setHeight(int height) {
         this.height = height;

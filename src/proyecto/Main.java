@@ -26,24 +26,15 @@ public class Main {
         MyArrayList<Usuario> usuarios= new MyArrayList<>();
         MyArrayList<medicamento> medicamentos= new MyArrayList<>();
         Avl_tree<Usuario> usuarios1 = new Avl_tree<>();
-        usuarios1.insert(new Usuario(0, "Contraseña"));
-        System.out.println(usuarios1.find(new Usuario(0, "Contra")));
-        int j=0;
-        Random r= new Random();
-        long startTime = System.currentTimeMillis();
-          for (int i = 0; i < 10; i++) {
-              j++;
-              Usuario p= new Usuario(j,"Hola");
-              usuarios.add(p);
-          }
-          for (int k = 0; k < 10; k ++) {
-              medicamento p= new medicamento("hola",5,3,3);
-              medicamentos.add(p);              
-          }
+        usuarios.add(new Usuario(0, "Contraseña"), new ordenar());
+        usuarios.add(new Usuario(3, "Contraseña"), new ordenar());
+        usuarios.add(new Usuario(2, "Contraseña"), new ordenar());
+        usuarios.add(new Usuario(5, "Contraseña"), new ordenar());
+        usuarios.add(new Usuario(1, "Contraseña"), new ordenar());
         
-        medicamentos.sort(new ordenarNombre());
-        usuarios.sort(new ordenar());
-        
-        System.out.println(usuarios.find(new Usuario(800,"ola")));
+        for (int i = 0; i < usuarios.size(); i++) {
+            System.out.println(usuarios.get(i));
+        }
+   
     }
 }

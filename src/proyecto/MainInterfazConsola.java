@@ -21,12 +21,12 @@ public class MainInterfazConsola {
         
         Usuario u = new Usuario(1234, "1234");
         Usuario u2 = new Usuario(1234, "1234");
-        usuarios.add(u);
+        usuarios.add(u, new ordenarNombre());
         usuarios1.insert(u);
         usuarios1.insert(u2);
         medicamento p= new medicamento("Loratadina", 60 , 7, 3);
-        u.medicamentos.add(p);
-        medicamentos.add(p);
+        u.medicamentos.add(p,new ordenarNombre());
+        medicamentos.add(p, new ordenarNombre());
         Avl_Node<Usuario> existe = null; //cuando se compruebe el usuario sus datos se van a manejar con este nodo, por eso es global
         
         Scanner sc = new Scanner(System.in);
@@ -106,7 +106,7 @@ public class MainInterfazConsola {
                     System.out.println("¿Veces por dia del medicamento?");
                     int vecesDia=sc.nextInt();
                     medicamento f = new medicamento(nombre, cantidad, vecesSemana, vecesDia);
-                    existe.element.medicamentos.add(f);
+                    existe.element.medicamentos.add(f,new ordenarNombre());
                     System.out.println("Registrado Exitosamente");
                     break;
             }
