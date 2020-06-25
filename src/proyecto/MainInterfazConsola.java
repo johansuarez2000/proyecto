@@ -48,8 +48,14 @@ public class MainInterfazConsola {
                     System.out.println("Escribe tu contraseña");
                     String contraseña= sc.next();
                     Usuario l= new Usuario(id,contraseña);
-                    usuarios1.insert(l);
-                    flag = true;
+                    if(usuarios1.find(l)==null){
+                        usuarios1.insert(l);
+                        flag = true;
+                        System.out.println("Usuario Creado");
+                    }
+                    else{
+                        System.out.println("El usuario ya existe");
+                    }
                     break;
                 default:
                     break;
