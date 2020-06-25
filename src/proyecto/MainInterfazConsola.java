@@ -19,8 +19,9 @@ public class MainInterfazConsola {
         MyArrayList<medicamento> medicamentos= new MyArrayList<>();
         Avl_tree<Usuario> usuarios1 = new Avl_tree<>();
         
+        
         Usuario u = new Usuario(1234, "1234");
-        Usuario u2 = new Usuario(1234, "1234");
+        Usuario u2 = new Usuario(2525, "2525");
         usuarios.add(u);
         usuarios1.insert(u);
         usuarios1.insert(u2);
@@ -50,6 +51,8 @@ public class MainInterfazConsola {
                     usuarios1.insert(l);
                     flag = true;
                     break;
+                default:
+                    break;
             }
         }
         
@@ -72,23 +75,33 @@ public class MainInterfazConsola {
         }/////////////////////////////////////////////////
         //Mostrar funcionalidades
         flag=false;
+        int intentos = 0; 
         while(flag!=true){
             int decision;
+            if(intentos>0){
+                System.out.println("¿En que podemos ayudarte?");
+            }
             System.out.println("1. Listar Medicamentos 2. Consultar medicamento 3. Registrar Medicamento 4. salir");
             decision = sc.nextInt();
             switch (decision){
                 case 1:
-                    for(int i=0; i<existe.element.medicamentos.getSize();i++){
+                    if(existe.element.medicamentos.getSize()<1){
+                        System.out.println("No hay medicamentos registrados");
+                    }
+                    else{
+                        for(int i=0; i<existe.element.medicamentos.getSize();i++){
                         System.out.println("Medicamento "+ (i+1));
                         System.out.println(existe.element.medicamentos.get(i).toString());
-                    }
+                        }
                     System.out.println("Esos son todos los medicamentos");
+                    }
+                    intentos++;
                     break;
                 case 2:
                     System.out.println("Nombre del medicamento que deseas buscar");
                     String nombre = sc.next();
                     medicamento m = new medicamento (nombre, 0,0,0);
-                   for(int i=0; i<existe.element.medicamentos.getSize();i++){
+                    for(int i=0; i<existe.element.medicamentos.getSize();i++){
                        if(m.getNombre().equals(existe.element.medicamentos.get(i).getNombre())){
                            System.out.println(existe.element.medicamentos.get(i).toString());
                        }
@@ -96,6 +109,7 @@ public class MainInterfazConsola {
                            System.out.println("Medicamento no encontrado");
                        }
                     }
+                    intentos++;
                     break;
                 case 3:
                     System.out.println("¿Nombre del medicamento?");
@@ -109,10 +123,15 @@ public class MainInterfazConsola {
                     medicamento f = new medicamento(nombre, cantidad, vecesSemana, vecesDia);
                     existe.element.medicamentos.add(f);
                     System.out.println("Registrado Exitosamente");
+                    intentos++;
                     break;
                 case 4:
                     System.out.println("Estamos contigo");
+                    intentos++;
                     flag=true;
+                    break;
+                default:
+                    break;
             }
         }
     }
