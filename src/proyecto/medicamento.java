@@ -72,7 +72,7 @@ public class medicamento implements Comparable<medicamento> {
 
     @Override
     public String toString() {
-        return "medicamento{" + "nombre=" + nombre + ", cantidad=" + cantidad + ", veces_semana=" + veces_semana + ", veces_dia=" + veces_dia + ", modo=" + modo + '}';
+        return "nombre:" + nombre + ", cantidad:" + cantidad + ", veces por semana:" + veces_semana + ", veces por dia:" + veces_dia;
     }
     
 }
