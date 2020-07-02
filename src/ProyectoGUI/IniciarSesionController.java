@@ -30,24 +30,24 @@ public class IniciarSesionController implements Initializable {
     @FXML private Button iniciarsesion;
     @FXML private TextField textid;
     @FXML private TextField textcontraseña;
-    @FXML private Label error;
+    @FXML private Label labelError;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         usuarios1.insert(u1);
     }
     public void iniciarSesion(){
-        error.setVisible(false);  
+        labelError.setVisible(false);
         try {
             int id=Integer.parseInt(textid.getText());
             String contraseña = textcontraseña.getText();
             Usuario comprobar = new Usuario(id,contraseña);
             if(usuarios1.find(comprobar)== null){
-                error.setVisible(true);
+                labelError.setVisible(true);
             }
         }
         catch(IllegalFormatException | NumberFormatException e){
-            error.setVisible(true);
+            labelError.setVisible(true);
         }
     }
     public void registrarse(ActionEvent event) throws IOException{
