@@ -5,14 +5,21 @@
  */
 package ProyectoGUI;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.IllegalFormatException;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import proyecto.Avl_tree;
 import proyecto.Usuario;
 
@@ -43,7 +50,11 @@ public class IniciarSesionController implements Initializable {
             error.setVisible(true);
         }
     }
-    public void registrarse(){
-        
+    public void registrarse(ActionEvent event) throws IOException{
+        Parent registro = FXMLLoader.load(getClass().getResource("Registro.fxml"));
+        Scene registroScene= new Scene (registro);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(registroScene);
+        window.show();
     }
 }
