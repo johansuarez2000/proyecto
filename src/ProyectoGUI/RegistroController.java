@@ -90,5 +90,13 @@ public class RegistroController implements Initializable {
             labelError.setText("Las contraseñas no coinciden");
         }
     }
+    public void regresar (ActionEvent event) throws IOException{
+        Parent registro = FXMLLoader.load(getClass().getResource("IniciarSesion.fxml"));
+        Scene iniciarSesionScene= new Scene (registro);
+        iniciarSesionScene.getStylesheets().add("stylesheets/styles.css");
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(iniciarSesionScene);
+        window.show();
+    }
 
 }

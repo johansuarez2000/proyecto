@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -14,7 +15,7 @@
    <children>
       <VBox alignment="TOP_CENTER">
          <children>
-            <Label fx:id="title" layoutX="350.0" layoutY="266.0" text="Registrarse">
+            <Label fx:id="title" layoutX="350.0" layoutY="266.0" text="Registrarse" visible="false">
                <font>
                   <Font name="Berlin Sans FB" size="25.0" />
                </font>
@@ -31,15 +32,21 @@
                <font>
                   <Font name="Berlin Sans FB" size="25.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </Label>
          </children>
       </VBox>
       <VBox alignment="TOP_CENTER">
          <children>
-            <Label layoutX="295.0" layoutY="30.0" text="Para registrate ingresa tus datos">
+            <Label layoutX="295.0" layoutY="30.0" text="Registrarse" underline="true">
                <font>
                   <Font name="Berlin Sans FB" size="18.0" />
                </font>
+               <VBox.margin>
+                  <Insets right="170.0" top="5.0" />
+               </VBox.margin>
             </Label>
             <Label text="Ingresa tu id ">
                <font>
@@ -72,20 +79,36 @@
                </VBox.margin>
             </Label>
             <PasswordField fx:id="passwordFieldVerification" layoutX="285.0" layoutY="89.0" maxWidth="250.0" prefWidth="200.0" />
-            <Label fx:id="labelError" text="Usuario o contraseña incorrecta" textFill="#ee0101" visible="false">
+            <Label fx:id="labelError" text="Usuario o contraseña incorrecta" textFill="#ee0101" underline="true" visible="false">
                <font>
                   <Font name="Berlin Sans FB" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#crearUsuario" text="Crear Usuario">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Button>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#regresar">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/go-back-left-arrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#crearUsuario" text="Crear Usuario">
+                     <HBox.margin>
+                        <Insets left="260.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>
    <padding>
-      <Insets top="20.0" />
+      <Insets top="10.0" />
    </padding>
 </VBox>

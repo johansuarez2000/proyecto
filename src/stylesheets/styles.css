@@ -1,0 +1,29 @@
+ .root{
+     -fx-font-size: 18;
+     -fx-background-color: #13a3e6;
+     -fx-font-family: "Berlin Sans FB";
+     -fx-font-weight: normal;
+     -fx-text-fill: #3e3e3e;
+ }
+ .text-field {
+     -fx-background-color: #a9a9a9 , #13a3e6 , #13a3e6;
+     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+ }
+
+ .text-field:focused {
+     -fx-background-color: white , white , white;
+     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+ }
+ .label{
+     -fx-font-family: "Berlin Sans FB";
+     -fx-font-weight: normal;
+ }
+ .button{
+     -fx-font-size: 16;
+     -fx-background-color: whitesmoke;
+     -fx-background-radius: 5;
+     -fx-background-insets: 0;
+ }
+ .menu{
+     -fx-font-size: 15;
+ }

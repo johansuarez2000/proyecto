@@ -1,0 +1,12 @@
+#titles {
+    -fx-font-size: 20;
+    -fx-background-color: whitesmoke;
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+    /*-fx-text-fill: white;*/
+    -fx-padding: 2,5,2,5;
+}
+#label-error{
+
+    -fx-underline: true;
+}

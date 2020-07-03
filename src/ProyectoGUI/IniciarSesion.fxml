@@ -14,7 +14,7 @@
    <children>
       <VBox alignment="TOP_CENTER">
          <children>
-            <Label fx:id="title" layoutX="350.0" layoutY="266.0" text="Iniciar Sesión">
+            <Label fx:id="title" layoutX="350.0" layoutY="266.0" text="Iniciar Sesión" visible="false">
                <font>
                   <Font name="Berlin Sans FB" size="25.0" />
                </font>
@@ -39,10 +39,13 @@
       </VBox>
       <VBox alignment="TOP_CENTER">
          <children>
-            <Label layoutX="295.0" layoutY="30.0" text="Ingresa tus datos para iniciar sesión">
+            <Label layoutX="295.0" layoutY="30.0" text="Iniciar Sesión" underline="true">
                <font>
                   <Font name="Berlin Sans FB" size="18.0" />
                </font>
+               <VBox.margin>
+                  <Insets right="150.0" top="5.0" />
+               </VBox.margin>
             </Label>
             <Label text="Ingresa tu id ">
                <font>
@@ -66,16 +69,16 @@
                </VBox.margin>
             </Label>
             <PasswordField fx:id="textcontraseña" maxWidth="250.0" prefWidth="200.0" />
-            <Button fx:id="iniciarsesion" mnemonicParsing="false" onAction="#iniciarSesion" text="Iniciar Sesión">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-            </Button>
             <Label fx:id="labelError" text="Usuario o contraseña incorrecta" textFill="#ee0101" visible="false">
                <font>
                   <Font name="Berlin Sans FB" size="18.0" />
                </font>
             </Label>
+            <Button fx:id="iniciarsesion" mnemonicParsing="false" onAction="#iniciarSesion" text="Iniciar Sesión">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
             <Label text="¿No tienes una cuenta?">
                <VBox.margin>
                   <Insets left="600.0" />
