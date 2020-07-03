@@ -7,42 +7,92 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #13A3E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProyectoGUI.IniciarSesionController">
+<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProyectoGUI.IniciarSesionController">
    <children>
-      <ImageView layoutX="272.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Imagenes/farmacia.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="650.0" layoutY="512.0" text="¿No tienes una cuenta?" />
-      <Button layoutX="675.0" layoutY="529.0" mnemonicParsing="false" onAction="#registrarse" text="Registrarse" />
-      <TextField fx:id="textid" layoutX="326.0" layoutY="386.0" />
-      <Label layoutX="326.0" layoutY="369.0" text="Ingresa tu id ">
-         <font>
-            <Font name="Berlin Sans FB" size="15.0" />
-         </font></Label>
-      <Button fx:id="iniciarsesion" layoutX="352.0" layoutY="517.0" mnemonicParsing="false" onAction="#iniciarSesion" text="Iniciar sesión" />
-      <Label layoutX="340.0" layoutY="300.0" text="Alarmedica">
-         <font>
-            <Font name="Berlin Sans FB" size="25.0" />
-         </font>
-      </Label>
-      <Label layoutX="323.0" layoutY="426.0" text="Contraseña">
-         <font>
-            <Font name="Berlin Sans FB" size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelError" layoutX="283.0" layoutY="481.0" text="Usuario o contraseña incorrecta" textFill="#ee0101" visible="false">
-         <font>
-            <Font name="Berlin Sans FB" size="18.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="textcontraseña" layoutX="326.0" layoutY="443.0" />
+      <VBox alignment="TOP_CENTER">
+         <children>
+            <Label fx:id="title" layoutX="350.0" layoutY="266.0" text="Iniciar Sesión">
+               <font>
+                  <Font name="Berlin Sans FB" size="25.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="600.0" />
+               </VBox.margin>
+            </Label>
+            <ImageView pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/farmacia.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="alarmedica" text="Alarmedica">
+               <font>
+                  <Font name="Berlin Sans FB" size="25.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER">
+         <children>
+            <Label layoutX="295.0" layoutY="30.0" text="Ingresa tus datos para iniciar sesión">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Label>
+            <Label text="Ingresa tu id ">
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="150.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="textid" maxWidth="250.0" prefHeight="25.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextField>
+            <Label text="Contraseña">
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="160.0" />
+               </VBox.margin>
+            </Label>
+            <PasswordField fx:id="textcontraseña" maxWidth="250.0" prefWidth="200.0" />
+            <Button fx:id="iniciarsesion" mnemonicParsing="false" onAction="#iniciarSesion" text="Iniciar Sesión">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Label fx:id="labelError" text="Usuario o contraseña incorrecta" textFill="#ee0101" visible="false">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Label>
+            <Label text="¿No tienes una cuenta?">
+               <VBox.margin>
+                  <Insets left="600.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#registrarse" text="Registrarse">
+               <VBox.margin>
+                  <Insets left="600.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
    </children>
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
-</AnchorPane>
+   <padding>
+      <Insets top="10.0" />
+   </padding>
+</VBox>
