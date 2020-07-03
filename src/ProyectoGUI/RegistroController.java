@@ -51,8 +51,6 @@ public class RegistroController implements Initializable {
         usuariosAvlTree = new Avl_tree<>();
         Usuario usuario =new Usuario(1515,"1515");
         usuariosAvlTree.insert(usuario);
-        title.setId("titles");
-        title.getStylesheets().add("stylesheets/specific.css");
         alarmed.setId("titles");
         alarmed.getStylesheets().add("stylesheets/specific.css");
         labelError.setId("label-error");
@@ -73,9 +71,14 @@ public class RegistroController implements Initializable {
                 throw new IllegalArgumentException();
             }
             else{
-                Parent registro = FXMLLoader.load(getClass().getResource("IniciarSesion.fxml"));
-                Scene iniciarSesionScene= new Scene (registro);
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("IniciarSesion.fxml"));
+                Parent registroParent = loader.load();
+                Scene iniciarSesionScene= new Scene (registroParent);
                 iniciarSesionScene.getStylesheets().add("stylesheets/styles.css");
+
+                IniciarSesionController controller = loader.getController();
+                controller.addUserToDatabase(comprobar);
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(iniciarSesionScene);
                 window.show();
@@ -98,5 +101,4 @@ public class RegistroController implements Initializable {
         window.setScene(iniciarSesionScene);
         window.show();
     }
-
 }

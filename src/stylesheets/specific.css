@@ -10,3 +10,6 @@
 
     -fx-underline: true;
 }
+#no-registrado{
+    -fx-font-size: 15;
+}

@@ -19,12 +19,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import proyecto.Avl_Node;
 import proyecto.Avl_tree;
 import proyecto.Usuario;
 
 public class IniciarSesionController implements Initializable {
-    private Avl_tree<Usuario> usuarios1;
+    private Avl_tree<Usuario> usuarioAvlTree;
     Usuario u1 = new Usuario(1515,"1515");
+    Avl_Node<Usuario> existe = null;
 
     @FXML private TextField textid;
     @FXML private TextField textcontraseña;
@@ -37,9 +39,7 @@ public class IniciarSesionController implements Initializable {
         /* id para css
             titles : usar para labels que requieran un borde redondo de fondo blanco con padding de 5
          */
-        usuarios1 = new Avl_tree<>();
-        title.setId("titles");
-        title.getStylesheets().add("stylesheets/specific.css");
+        usuarioAvlTree = new Avl_tree<>();
 
         alarmedica.setId("titles");
         alarmedica.getStylesheets().add("stylesheets/specific.css");
@@ -47,7 +47,7 @@ public class IniciarSesionController implements Initializable {
         labelError.setId("label-error");
         labelError.getStylesheets().add("stylesheets/specific.css");
 
-        usuarios1.insert(u1);
+        usuarioAvlTree.insert(u1);
     }
     public void iniciarSesion(ActionEvent event) throws IOException{
         labelError.setVisible(false);
@@ -55,13 +55,19 @@ public class IniciarSesionController implements Initializable {
             int id=Integer.parseInt(textid.getText());
             String password = textcontraseña.getText();
             Usuario comprobar = new Usuario(id,password);
-            if(usuarios1.find(comprobar)== null){
+            existe = usuarioAvlTree.find(comprobar);
+            if(existe== null){
                 labelError.setVisible(true);
             }
             else{
-                Parent registro = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-                Scene mainMenuScene= new Scene (registro);
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("MainMenu.fxml"));
+                Parent iniciarSesionParent = loader.load();
+                Scene mainMenuScene= new Scene (iniciarSesionParent);
                 mainMenuScene.getStylesheets().add("stylesheets/styles.css");
+
+                MainMenuController controller = loader.getController();
+                controller.initUserData(comprobar);
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(mainMenuScene);
                 window.show();
@@ -78,6 +84,9 @@ public class IniciarSesionController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(registroScene);
         window.show();
+    }
+    public void addUserToDatabase( Usuario usuario){
+        usuarioAvlTree.insert(usuario);
     }
 
 }
