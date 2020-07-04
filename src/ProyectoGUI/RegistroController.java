@@ -31,9 +31,6 @@ import proyecto.Usuario;
  */
 public class RegistroController implements Initializable {
 
-
-
-    @FXML private Label title;
     @FXML private Label labelError;
     @FXML private TextField textFieldID;
     @FXML private PasswordField passwordField;
