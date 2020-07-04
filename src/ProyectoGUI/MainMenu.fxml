@@ -4,35 +4,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProyectoGUI.MainMenuController">
    <children>
-      <MenuBar nodeOrientation="RIGHT_TO_LEFT" VBox.vgrow="ALWAYS">
-        <menus>
-          <Menu mnemonicParsing="false" text="Configuración">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Usuario" />
-            </items>
-          </Menu>
-        </menus>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </MenuBar>
       <VBox alignment="TOP_CENTER" prefHeight="575.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="800.0" spacing="400.0" VBox.vgrow="ALWAYS">
+            <HBox prefHeight="45.0" prefWidth="800.0" spacing="400.0" VBox.vgrow="ALWAYS">
                <children>
                   <ButtonBar prefHeight="33.0" prefWidth="744.0" HBox.hgrow="ALWAYS">
                     <buttons>
@@ -44,9 +26,14 @@
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </VBox.margin>
             </HBox>
+            <Label id="titles" text="Medicamentos">
+               <VBox.margin>
+                  <Insets bottom="30.0" right="550.0" />
+               </VBox.margin>
+            </Label>
             <TableView fx:id="tabla" nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS">
               <columns>
-                  <TableColumn fx:id="medicamentoNombreColumn" minWidth="-Infinity" prefWidth="245.0" text="Medicamento" />
+                  <TableColumn fx:id="medicamentoNombreColumn" minWidth="-Infinity" onEditCommit="#changeNombreMedicamento" prefWidth="245.0" text="Medicamento" />
                 <TableColumn fx:id="medicamentoDosisColumn" minWidth="-Infinity" prefWidth="121.0" text="Dosis" />
                   <TableColumn fx:id="medicamentoVecesDiaColumn" prefWidth="177.0" text="Veces Por Día" />
                   <TableColumn fx:id="medicamentoVecesSemanaColumn" prefWidth="194.0" text="Veces Por Semana" />
@@ -60,8 +47,8 @@
             </TableView>
             <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
               <buttons>
-                  <Button mnemonicParsing="false" text="Añadir medicamento" />
-                <Button mnemonicParsing="false" text="Eliminar Medicamento" />
+                  <Button mnemonicParsing="false" onAction="#addMedicamento" text="Añadir medicamento" />
+                <Button mnemonicParsing="false" onAction="#deleteMedicamento" text="Eliminar Medicamento" />
               </buttons>
                <VBox.margin>
                   <Insets />

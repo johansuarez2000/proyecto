@@ -19,22 +19,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import proyecto.Avl_Node;
-import proyecto.Avl_tree;
-import proyecto.Usuario;
-import proyecto.medicamento;
+import proyecto.*;
 
 public class IniciarSesionController implements Initializable {
     private Avl_tree<Usuario> usuarioAvlTree;
+    private HashTable<Usuario> usuarioHashTable;
     private Usuario u1;
     private Usuario u2;
-    Avl_Node<Usuario> existe = null;
+    NodoHash<Usuario> existe = null;
 
     @FXML private TextField textid;
     @FXML private TextField textcontraseña;
     @FXML private Label labelError;
     @FXML private Label alarmedica;
-    @FXML private Label title;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -47,6 +44,7 @@ public class IniciarSesionController implements Initializable {
         medicamento m2= new medicamento("Clonazepam",100,100,100);
 
         usuarioAvlTree = new Avl_tree<>();
+        usuarioHashTable= new HashTable<>();
         u1.medicamentos.add(m1);
         u1.medicamentos.add(m2);
 
@@ -56,8 +54,8 @@ public class IniciarSesionController implements Initializable {
         labelError.setId("label-error");
         labelError.getStylesheets().add("stylesheets/specific.css");
 
-        usuarioAvlTree.insert(u1);
-        usuarioAvlTree.insert(u2);
+        usuarioHashTable.insertar(u1);
+        usuarioHashTable.insertar(u2);
     }
     public void iniciarSesion(ActionEvent event) throws IOException{
         labelError.setVisible(false);
@@ -65,8 +63,8 @@ public class IniciarSesionController implements Initializable {
             int id=Integer.parseInt(textid.getText());
             String password = textcontraseña.getText();
             Usuario comprobar = new Usuario(id,password);
-            existe = usuarioAvlTree.find(comprobar);
-            if((existe == null) || (existe.getElement().ComparePasword(comprobar) == false)){
+            existe = usuarioHashTable.buscar(comprobar);
+            if((existe == null) || (existe.getKey().ComparePasword(comprobar) == false)){
                 labelError.setVisible(true);
             }
             else{
@@ -99,7 +97,11 @@ public class IniciarSesionController implements Initializable {
         window.show();
     }
     public void addUserToDatabase( Usuario usuario){
+        usuarioHashTable.insertar(usuario);
+    }
+    public void updateUserInDatabase(NodoHash <Usuario> usuarioNode) {
 
-        usuarioAvlTree.insert(usuario);
+        usuarioHashTable.eliminar((Usuario) usuarioNode.getKey());
+        usuarioHashTable.insertar((Usuario) usuarioNode.getKey());
     }
 }

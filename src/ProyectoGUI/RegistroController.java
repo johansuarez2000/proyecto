@@ -75,7 +75,6 @@ public class RegistroController implements Initializable {
                 loader.setLocation(getClass().getResource("IniciarSesion.fxml"));
                 Parent registroParent = loader.load();
                 Scene iniciarSesionScene= new Scene (registroParent);
-                iniciarSesionScene.getStylesheets().add("stylesheets/styles.css");
 
                 IniciarSesionController controller = loader.getController();
                 controller.addUserToDatabase(comprobar);

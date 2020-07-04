@@ -23,7 +23,6 @@ public class Gui extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("IniciarSesion.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("stylesheets/styles.css");
         stage.setScene(scene);
         stage.setTitle("Alarmédica");
         Image icono = new Image("/Imagenes/medico.png");
