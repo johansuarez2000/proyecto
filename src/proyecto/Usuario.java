@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package proyecto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.*;
 /**
  *
  * @author Usuario
  */
 public class Usuario implements Comparable<Usuario> {
-    MyArrayList<medicamento> medicamentos;
+    public MyArrayList<medicamento> medicamentos;
     int id;
     String tipo;
     String Fecha;
@@ -20,6 +23,7 @@ public class Usuario implements Comparable<Usuario> {
         this.id = id;
         this.Contraseña = Contraseña;
         this.medicamentos= new MyArrayList<>();
+        medicamento m1 = new medicamento(" Clonazepam", 10, 10,10);
     }
 
     public int getId() {
@@ -52,6 +56,23 @@ public class Usuario implements Comparable<Usuario> {
 
     public void setContraseña(String Contraseña) {
         this.Contraseña = Contraseña;
+    }
+
+    public MyArrayList<medicamento> getMedicamentos() {
+        return medicamentos;
+    }
+
+    public void setMedicamentos(MyArrayList<medicamento> medicamentos) {
+        this.medicamentos = medicamentos;
+    }
+
+    public ObservableList<medicamento> getListaMedicamentos(){
+        ObservableList<medicamento> datos = FXCollections.observableArrayList();
+
+        for(int i=0; i<medicamentos.getSize();i++){
+            datos.add(medicamentos.get(i));
+        }
+        return datos;
     }
 
     @Override

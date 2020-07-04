@@ -44,14 +44,19 @@
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </VBox.margin>
             </HBox>
-            <TableView prefHeight="434.0" prefWidth="740.0" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tabla" nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS">
               <columns>
-                  <TableColumn minWidth="-Infinity" prefWidth="382.0" text="Medicamento" />
-                <TableColumn minWidth="-Infinity" prefWidth="357.0" text="Dosis" />
+                  <TableColumn fx:id="medicamentoNombreColumn" minWidth="-Infinity" prefWidth="245.0" text="Medicamento" />
+                <TableColumn fx:id="medicamentoDosisColumn" minWidth="-Infinity" prefWidth="121.0" text="Dosis" />
+                  <TableColumn fx:id="medicamentoVecesDiaColumn" prefWidth="177.0" text="Veces Por Día" />
+                  <TableColumn fx:id="medicamentoVecesSemanaColumn" prefWidth="194.0" text="Veces Por Semana" />
               </columns>
                <VBox.margin>
                   <Insets left="30.0" right="30.0" />
                </VBox.margin>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
             <ButtonBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
               <buttons>

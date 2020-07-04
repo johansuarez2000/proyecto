@@ -22,10 +22,12 @@ import javafx.stage.Stage;
 import proyecto.Avl_Node;
 import proyecto.Avl_tree;
 import proyecto.Usuario;
+import proyecto.medicamento;
 
 public class IniciarSesionController implements Initializable {
     private Avl_tree<Usuario> usuarioAvlTree;
-    Usuario u1 = new Usuario(1515,"1515");
+    private Usuario u1;
+    private Usuario u2;
     Avl_Node<Usuario> existe = null;
 
     @FXML private TextField textid;
@@ -39,7 +41,14 @@ public class IniciarSesionController implements Initializable {
         /* id para css
             titles : usar para labels que requieran un borde redondo de fondo blanco con padding de 5
          */
+        u1= new Usuario(1515,"1515");
+        u2= new Usuario(2020,"2020");
+        medicamento m1= new medicamento("Loratadina",100,100,100);
+        medicamento m2= new medicamento("Clonazepam",100,100,100);
+
         usuarioAvlTree = new Avl_tree<>();
+        u1.medicamentos.add(m1);
+        u1.medicamentos.add(m2);
 
         alarmedica.setId("titles");
         alarmedica.getStylesheets().add("stylesheets/specific.css");
@@ -48,6 +57,7 @@ public class IniciarSesionController implements Initializable {
         labelError.getStylesheets().add("stylesheets/specific.css");
 
         usuarioAvlTree.insert(u1);
+        usuarioAvlTree.insert(u2);
     }
     public void iniciarSesion(ActionEvent event) throws IOException{
         labelError.setVisible(false);
@@ -63,11 +73,14 @@ public class IniciarSesionController implements Initializable {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("MainMenu.fxml"));
                 Parent iniciarSesionParent = loader.load();
+
                 Scene mainMenuScene= new Scene (iniciarSesionParent);
+
                 mainMenuScene.getStylesheets().add("stylesheets/styles.css");
 
                 MainMenuController controller = loader.getController();
-                controller.initUserData(comprobar);
+                controller.initUserData(existe);
+
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(mainMenuScene);
                 window.show();
@@ -86,7 +99,7 @@ public class IniciarSesionController implements Initializable {
         window.show();
     }
     public void addUserToDatabase( Usuario usuario){
+
         usuarioAvlTree.insert(usuario);
     }
-
 }

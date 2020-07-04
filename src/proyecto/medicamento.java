@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package proyecto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.*;
 /**
  *
@@ -13,9 +16,9 @@ public class medicamento implements Comparable<medicamento> {
 
    
     String nombre;
-    int cantidad;
-    int veces_semana;
+    int cantidad; //cantidad de pastillas
     int veces_dia;
+    int veces_semana;
     String modo;
 
     public medicamento(String nombre, int cantidad, int veces_semana, int veces_dia) {
@@ -64,6 +67,8 @@ public class medicamento implements Comparable<medicamento> {
     public void setModo(String modo) {
         this.modo = modo;
     }
+
+
 
     @Override
     public int compareTo(medicamento t) {

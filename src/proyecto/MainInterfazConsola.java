@@ -108,7 +108,7 @@ public class MainInterfazConsola {
                     String nombre = sc.next();
                     medicamento m = new medicamento (nombre, 0,0,0);
                     for(int i=0; i<existe.element.medicamentos.getSize();i++){
-                       if(m.getNombre().equals(existe.element.medicamentos.get(i).getNombre())){
+                       if(m. getNombre().equals(existe.element.medicamentos.get(i).getNombre())){
                            System.out.println(existe.element.medicamentos.get(i).toString());
                        }
                        else{

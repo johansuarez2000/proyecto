@@ -81,7 +81,7 @@
                   </Button>
                   <Button mnemonicParsing="false" onAction="#crearUsuario" text="Crear Usuario">
                      <HBox.margin>
-                        <Insets left="260.0" />
+                        <Insets left="250.0" />
                      </HBox.margin>
                   </Button>
                </children>
