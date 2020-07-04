@@ -33,7 +33,7 @@ public class HashTable<T extends Comparable>{
      public void insertar(T x){
          int posicion;
          NodoHash<T> y= new NodoHash(x);
-         posicion= dispercion(x);
+         posicion= dispercion(x);                
          y.setSiguiente(elementos[posicion]);
          elementos[posicion]= y;
          numElements ++;             
