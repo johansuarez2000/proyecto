@@ -66,7 +66,7 @@ public class IniciarSesionController implements Initializable {
             String password = textcontraseña.getText();
             Usuario comprobar = new Usuario(id,password);
             existe = usuarioAvlTree.find(comprobar);
-            if(existe== null){
+            if((existe == null) || (existe.getElement().ComparePasword(comprobar) == false)){
                 labelError.setVisible(true);
             }
             else{
