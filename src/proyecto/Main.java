@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 package proyecto;
-
 import java.util.*;
 import java.math.*;
-import java.security.*;
+import java.security.*; 
 /**
  *
  * @author ASUS
@@ -28,11 +27,22 @@ public class Main {
         Avl_tree<Usuario> usuarios1 = new Avl_tree<>();
         usuarios1.insert(new Usuario(0, "Contraseña"));
         HashTable<Usuario> usuarios2= new HashTable<>();
-        Usuario sebas= new Usuario(1002687237, "Contraseña");
-        Usuario sebas1= new Usuario(1002687237, "Contraseña1");
-        usuarios2.insertar(sebas);
-        usuarios2.insertar(sebas1);
-        System.out.println(usuarios2.buscar(sebas1));
+        float inicio,fin;
         
+        
+        for (int i = 0; i < 10000000; i++) { 
+            Usuario a= new Usuario(i, "Contraseña");
+            usuarios2.insertar(a);
+        }
+        inicio= System.nanoTime();
+        double y= Math.random();
+        y= (y*9999999.0)+1;
+        int j= (int) y;
+        Usuario z= new Usuario(j, "Contraseña");
+        fin= System.nanoTime();
+        System.out.println(usuarios2.buscar(z));
+        
+        
+       System.out.printf("%nEl valor de la variable es %.6f", (fin-inicio)/(1000000000));
     }
 }
