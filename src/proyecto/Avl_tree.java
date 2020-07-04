@@ -174,9 +174,7 @@ public class Avl_tree <T extends Comparable<? super T>> {
             } else{
                 t=t.derecha;
             }
-        }
-            
-                 
+        }              
        return balance(t); 
     }
     private void print(){
