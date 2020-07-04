@@ -23,7 +23,6 @@ public class Usuario implements Comparable<Usuario> {
         this.id = id;
         this.Contraseña = Contraseña;
         this.medicamentos= new MyArrayList<>();
-        medicamento m1 = new medicamento(" Clonazepam", 10, 10,10);
     }
 
     public int getId() {
@@ -66,25 +65,16 @@ public class Usuario implements Comparable<Usuario> {
         this.medicamentos = medicamentos;
     }
 
-    public ObservableList<medicamento> getListaMedicamentos(){
-        ObservableList<medicamento> datos = FXCollections.observableArrayList();
-
-        for(int i=0; i<medicamentos.getSize();i++){
-            datos.add(medicamentos.get(i));
-        }
-        return datos;
-    }
-
     @Override
     public int compareTo(Usuario t) {
         return this.id-t.id;
 
     }
-    public String ComparePasword(Usuario t){
+    public boolean ComparePasword(Usuario t){
        if(t.getContraseña().equals(this.Contraseña)){
-           return"Bienvenido";
+           return true;
        }
-       return "contraseña incorrecta";
+       return false;
     }
 
     @Override
@@ -116,12 +106,10 @@ public class Usuario implements Comparable<Usuario> {
     }
 }    
  class ordenar implements Comparator<Usuario>{
-
     @Override
     public int compare(Usuario t, Usuario t1) {
      return t.getId()-t1.getId();
     }
-
 }
     
     
